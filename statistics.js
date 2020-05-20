@@ -28,13 +28,23 @@
                         if (matches === null || matches === undefined) {
                             matches = [];
                         }
-                        for (var i = 0;i < matches.length;i++) {
-                            this.push(Number(matches[i]));
+                        for (var j = 0;j < matches.length;j++) {
+                            this.push(Number(matches[j]));
                         }
                         return this;
                     }
-                    for (var i = 0;i < data.length;i++) {
-                        this.add(data[i]);
+                    for (var k = 0;k < data.length;k++) {
+                        this.add(data[k]);
+                    }
+                    return this;
+                }
+                
+                addSeveral(howMany,...data) {
+                    if (howMany === undefined || typeof howMany != "number" || howMany < 1) {
+                        return;
+                    }
+                    for (var i = 0;i < howMany;i++) {
+                        this.add(...data);
                     }
                     return this;
                 }
@@ -69,10 +79,82 @@
                     return this.length;
                 }
                 
+                get lower() {
+                    this.purify();
+                    this.data = this.asc;
+                    if (this.length === 0 || this.length == 1) {
+                        return window.Statistics.NumericalData();
+                    }
+                    if (this.length % 2 === 0) {
+                        return this.slice(0,this.length / 2);
+                    } else if (this.length % 2 == 1) {
+                        return this.slice(0,(this.length - 1) / 2);
+                    }
+                    return window.Statistics.NumericalData();
+                }
+                
+                get upper() {
+                    this.purify();
+                    this.data = this.asc;
+                    if (this.length === 0 || this.length == 1) {
+                        return window.Statistics.NumericalData();
+                    }
+                    if (this.length % 2 === 0) {
+                        return this.slice(this.length / 2,this.length);
+                    } else if (this.length % 2 == 1) {
+                        return this.slice((this.length + 1) / 2,this.length);
+                    }
+                    return window.Statistics.NumericalData();
+                }
+                
+                get asc() {
+                    var n = window.Statistics.NumericalData(this.data);
+                    n.sort(function(a,b) {
+                        if (a < b) {
+                            return -1;
+                        } else if (a > b) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    });
+                    return n;
+                }
+                
+                get desc() {
+                    var n = window.Statistics.NumericalData(this.data);
+                    n.sort(function(a,b) {
+                        if (a < b) {
+                            return 1;
+                        } else if (a > b) {
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+                    });
+                    return n;
+                }
+                
+                link() {
+                    this.purify();
+                    return "https://zsnout.com/statistics?data=" + this.data.join(",");
+                }
+                
+                permalink() {
+                    return this.link();
+                }
+                
+                permaLink() {
+                    return this.link();
+                }
+                
+                url() {
+                    return this.link();
+                }
+                
                 min() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).min without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else if (this.length == 1) {
                         return this[0];
@@ -90,7 +172,6 @@
                 max() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).max without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else if (this.length == 1) {
                         return this[0];
@@ -105,10 +186,14 @@
                     }
                 }
                 
+                range() {
+                    this.purify();
+                    return this.max() - this.min();
+                }
+                
                 sum() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).sum without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else {
                         var sum = 0;
@@ -122,7 +207,6 @@
                 product() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).sum without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else {
                         var product = 1;
@@ -146,15 +230,10 @@
                     return this.average();
                 }
                 
-                range() {
-                    this.purify();
-                    return this.max() - this.min();
-                }
-                
                 median() {
                     this.purify();
+                    this.data = this.asc;
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).median without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else {
                         if (this.length % 2 == 1) {
@@ -163,6 +242,50 @@
                             return (this[(this.length - 2) / 2] + this[this.length / 2]) / 2;
                         }
                     }
+                }
+                
+                q1() {
+                    return this.lower.median();
+                }
+                
+                q2() {
+                    return this.median();
+                }
+                
+                q3() {
+                    return this.upper.median();
+                }
+                
+                quartile1() {
+                    return this.q1();
+                }
+                
+                quartile2() {
+                    return this.q2();
+                }
+                
+                quartile3() {
+                    return this.q3();
+                }
+                
+                lowerQuartile() {
+                    return this.q1();
+                }
+                
+                upperQuartile() {
+                    return this.q3();
+                }
+                
+                iqr() {
+                    return this.q3() - this.q1();
+                }
+                
+                interQuartileRange() {
+                    return this.iqr();
+                }
+                
+                interquartileRange() {
+                    return this.iqr();
                 }
                 
                 frequency() {
@@ -222,7 +345,6 @@
                 modes() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).modes without any data may not return an appropriate result. For compatibility reasons, it will return [] without any data.");
                         return [];
                     }
                     
@@ -253,12 +375,21 @@
                 
                 mode() {
                     this.purify();
-                    var modes = this.modes();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).mode without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     } else {
+                        var modes = this.modes();
                         return modes[0];
+                    }
+                }
+                
+                modeFreq() {
+                    this.purify();
+                    if (this.length === 0) {
+                        return 0;
+                    } else {
+                        var modes = this.modes();
+                        return this.freqOf(modes[0]);
                     }
                 }
                 
@@ -266,7 +397,6 @@
                     sample = !!sample;
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).variance without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     }
                     var mean = this.average();
@@ -275,6 +405,10 @@
                         list.push((this[i] - mean) * (this[i] - mean));
                     }
                     return list.sum() / (sample ? list.length - 1 : list.length);
+                }
+                
+                sampleVariance() {
+                    return this.variance(true);
                 }
                 
                 standardDeviation(sample) {
@@ -286,10 +420,17 @@
                     return this.standardDeviation();
                 }
                 
+                sampleStandardDeviation() {
+                    return this.standardDeviation(true);
+                }
+                
+                sampleStdDev() {
+                    return this.standardDeviation(true);
+                }
+                
                 mad() {
                     this.purify();
                     if (this.length === 0) {
-                        console.warn("Using NumericalData(...).mad without any data may not return an appropriate result. For compatibility reasons, it will return 0 without any data.");
                         return 0;
                     }
                     var mean = this.average();
@@ -298,6 +439,93 @@
                         list.push(Math.abs(this[i] - mean));
                     }
                     return list.average();
+                }
+                
+                meanAbsoluteDeviation() {
+                    return this.mad();
+                }
+                
+                lowerOutliers(max) {
+                    var outliers = {
+                        "iqr": this.q1() - 1.5 * this.iqr(),
+                        "stddev": this.mean() - 2 * this.stdDev(),
+                        "standarddeviation": this.mean() - 2 * this.stdDev(),
+                        "mad": this.mean() - 2 * this.mad(),
+                        "meanabsolutedeviation": this.mean() - 2 * this.mad()
+                    };
+                    if (typeof max == "string" && (max.toLowerCase() in Object.keys(outliers))) {
+                        max = outliers[max.toLowerCase()];
+                    }
+                    
+                    if (max === undefined || isNaN(Number(max))) {
+                        max = outliers.iqr[1];
+                    }
+                    
+                    max = Number(max);
+                    
+                    var list = window.Statistics.NumericalData();
+                    for (var i = 0;i < this.length;i++) {
+                        if (this[i] < max) {
+                            list.add(this[i]);
+                        }
+                    }
+                    
+                    return list;
+                }
+                
+                upperOutliers(min) {
+                    var outliers = {
+                        "iqr": this.q3() + 1.5 * this.iqr(),
+                        "stddev": this.mean() + 2 * this.stdDev(),
+                        "standarddeviation": this.mean() + 2 * this.stdDev(),
+                        "mad": this.mean() + 2 * this.mad(),
+                        "meanabsolutedeviation": this.mean() + 2 * this.mad()
+                    };
+                    if (typeof min == "string" && (min.toLowerCase() in Object.keys(outliers))) {
+                        min = outliers[min.toLowerCase()];
+                    }
+                    
+                    if (min === undefined || isNaN(Number(min))) {
+                        min = outliers.iqr;
+                    }
+                    
+                    min = Number(min);
+                    
+                    var list = window.Statistics.NumericalData();
+                    for (var i = 0;i < this.length;i++) {
+                        if (this[i] > min) {
+                            list.add(this[i]);
+                        }
+                    }
+                    
+                    return list;
+                }
+                
+                outliers(max,min) {
+                    if (min === undefined) {
+                        min = max;
+                    }
+                    return this.lowerOutliers(max).concat(this.upperOutliers(min));
+                }
+                
+                iqrOutliers() {
+                    return this.outliers("iqr");
+                }
+                
+                stdDevOutliers() {
+                    return this.outliers("stddev");
+                }
+                
+                standardDeviationOutliers() {
+                    return this.outliers("stddev");
+                }
+                
+                madOutliers() {
+                    return this.outliers("mad");
+                }
+                
+                meanAbsoluteDeviationOutliers() {
+                    return this.outliers("mad");
                 }
                 
                 statistics() {
@@ -309,13 +537,20 @@
                         product: this.product(),
                         range: this.range(),
                         mean: this.mean(),
-                        median: this.median(),
                         mode: this.mode(),
+                        modeFreq: this.modeFreq(),
+                        q1: this.q1(),
+                        median: this.median(),
+                        q3: this.q3(),
+                        iqr: this.iqr(),
                         variance: this.variance(false),
                         sampleVariance: this.variance(true),
-                        standardDeviation: this.standardDeviation(false),
-                        sampleStandardDeviation: this.standardDeviation(true),
-                        mad: this.mad()
+                        stdDev: this.standardDeviation(false),
+                        sampleStdDev: this.standardDeviation(true),
+                        mad: this.mad(),
+                        iqrOutliers: this.outliers("IQR"),
+                        stdDevOutliers: this.outliers("stdDev"),
+                        madOutliers: this.outliers("MAD"),
                     };
                     
                     var html = "<table>";
@@ -337,12 +572,16 @@
                     }
                     add("    </tbody>");
                     add("</table>");
-                    obj.data = this.data;
                     obj.html = html;
-                	return obj;
+                    
+                    obj.data = this.data;
+                    obj.lower = this.lower;
+                    obj.upper = this.upper;
+                    
+                    return obj;
                 }
                 
-                stats() {
+                get stats() {
                     return this.statistics();
                 }
             })(...data);

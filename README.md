@@ -4,9 +4,20 @@ Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
 
 ### It can compute:
 
+#### Miscellaneous Values
+
+ - The lower data set `.lower`
+ - The upper data set `.upper`
+ - The set in ascending order `.asc`
+ - The set in descending order `.desc`
+ - The data set as an array `.data`
+ - The sum of all values `.sum()`
+ - The product of all values `.product()`
+
+#### Measures of Center
+
  - The minimum value `.min()`
  - The maximum value `.max()`
- - The range `.range()`
  - The first quartile `.q1()`
  - The median `.median()`
  - The third quartile `.q3()`
@@ -14,13 +25,22 @@ Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
  - The modes `.modes()`
  - The mode `.mode()`
 
-### You can also retrieve certain values:
+#### Measures of Spread
 
- - The data set as an array `.data`
- - The lower data set `.lower`
- - The upper data set `.upper`
- - The set in ascending order `.asc`
- - The set in descending order `.desc`
+ - The standard deviation `.stdDev()`
+ - The sample standard deviation `.sampleStdDev()`
+ - The variance `.variance()`
+ - The sample variance `.sampleVariance()`
+ - The MAD (mean absolute deviation) `.mad()`
+ - The IQR (Interquartile Range) `.iqr()`
+ - The range `.range()`
+
+#### Outliers
+
+ - Outliers by Q<sub>1/3</sub> ± 1.5 × IQR `.iqrOutliers()` *or* `.outliers("IQR")`
+ - Outliers by mean ± 2 × StdDev `.stdDevOutliers()` *or* `.outliers("StdDev")`
+ - Outliers by mean ± 2 × MAD `.madOutliers()` *or* `.outliers("MAD")`
+ - Outliers by custom boundaries `.outliers(max,min)` *Numbers will be added as outliers if they are less than `max` or more than `min`.*
 
 ### You can also set values:
 

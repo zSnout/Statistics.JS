@@ -24,7 +24,7 @@
                             this.push(data[0]);
                             return this;
                         }
-                        var matches = String(data[0]).match(/([0-9]+.[0-9]+)|(.[0-9]+)|([0-9]+)/g);
+                        var matches = String(data[0]).match(/-?(([0-9]+\.[0-9]+)|(\.[0-9]+)|([0-9]+))/g);
                         if (matches === null || matches === undefined) {
                             matches = [];
                         }
@@ -528,6 +528,22 @@
                     return this.outliers("mad");
                 }
                 
+                fiveNum() {
+                    return [this.min(),this.q1(),this.median(),this.q3(),this.max()];
+                }
+                
+                fiveNumber() {
+                    return this.fiveNum();
+                }
+                
+                fiveNumberSummary() {
+                    return this.fiveNum();
+                }
+                
+                fiveNumSummary() {
+                    return this.fiveNum();
+                }
+                
                 statistics() {
                     var obj = {
                         length: this.length,
@@ -542,6 +558,7 @@
                         q1: this.q1(),
                         median: this.median(),
                         q3: this.q3(),
+                        fiveNum: this.fiveNum(),
                         iqr: this.iqr(),
                         variance: this.variance(false),
                         sampleVariance: this.variance(true),

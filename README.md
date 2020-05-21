@@ -4,7 +4,7 @@ Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
 
 ### Installation
 
-There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB), which contains the development version of Statistics.JS. The other is `statistics.min.js` (~7 kB), which contains the production version.
+There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB), which contains the development version of Statistics.JS. The other is `statistics.min.js` (~7 kB), which contains the production version. We reccomend using the `statistics.min.js` file or using the zSnout hosted version at `https://zsnout.com/libs/statistics.min.js`.
 
 ### It can compute:
 

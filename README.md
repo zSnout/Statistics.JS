@@ -2,9 +2,13 @@
 
 Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
 
+### Installation
+
+There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB), which contains the development version of Statistics.JS. The other is `statistics.min.js` (~7 kB), which contains the production version.
+
 ### It can compute:
 
-#### Miscellaneous Values
+#### Descriptive Statistics
 
  - The lower data set `.lower`
  - The upper data set `.upper`
@@ -42,7 +46,7 @@ Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
  - Outliers by mean ± 2 × MAD `.madOutliers()` *or* `.outliers("MAD")`
  - Outliers by custom boundaries `.outliers(max,min)` *Numbers will be added as outliers if they are less than `max` or more than `min`.*
 
-### You can also set values:
+### You can also set or add values:
 
  - Add an item to the data set `.add(item)`
  - Add several items to the data set `.add(item1,item2...)`

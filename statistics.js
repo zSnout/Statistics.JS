@@ -88,7 +88,7 @@
                     if (this.length % 2 === 0) {
                         return this.slice(0,this.length / 2);
                     } else if (this.length % 2 == 1) {
-                        return this.slice(0,(this.length - 1) / 2);
+                        return this.slice(0,(this.length - 1) / 2 + 1);
                     }
                     return window.Statistics.NumericalData();
                 }
@@ -102,7 +102,7 @@
                     if (this.length % 2 === 0) {
                         return this.slice(this.length / 2,this.length);
                     } else if (this.length % 2 == 1) {
-                        return this.slice((this.length + 1) / 2,this.length);
+                        return this.slice((this.length + 1) / 2 - 1,this.length);
                     }
                     return window.Statistics.NumericalData();
                 }

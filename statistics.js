@@ -24,6 +24,10 @@
                             this.push(data[0]);
                             return this;
                         }
+                        if (typeof(data[0]) == "function") {
+                            this.add((data[0])());
+                            return this;
+                        }
                         var matches = String(data[0]).match(/-?(([0-9]+\.[0-9]+)|(\.[0-9]+)|([0-9]+))/g);
                         if (matches === null || matches === undefined) {
                             matches = [];
@@ -458,7 +462,7 @@
                     }
                     
                     if (max === undefined || isNaN(Number(max))) {
-                        max = outliers.iqr[1];
+                        max = outliers.iqr;
                     }
                     
                     max = Number(max);
@@ -526,6 +530,18 @@
                 
                 meanAbsoluteDeviationOutliers() {
                     return this.outliers("mad");
+                }
+                
+                iqrBounds() {
+                    return [this.q1() - 1.5 * this.iqr(),this.q3() + 1.5 * this.iqr()];
+                }
+                
+                stdDevBounds() {
+                    return [this.mean() - 2 * this.stdDev(),this.mean() + 2 * this.stdDev()];
+                }
+                
+                madBounds() {
+                    return [this.mean() - 2 * this.mad(),this.mean() + 2 * this.mad()];
                 }
                 
                 fiveNum() {

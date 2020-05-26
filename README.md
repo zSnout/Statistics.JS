@@ -30,6 +30,16 @@ Statistics.JS will re-parse each value within the array.
 
 Statistics.JS will re-parse each value within the object.
 
+#### Examples
+
+`2` --> `2`
+
+`3.4` --> `3.4`
+
+`"5px"` --> `5`
+
+`"4px, 6px, 78px"` --> `4` `6` `78`
+
 ### Computing Values
 
 #### Descriptive Statistics

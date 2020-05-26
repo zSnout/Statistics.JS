@@ -8,7 +8,7 @@ There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB
 
 ### Creating a Data Set
 
-You can create a new data set with the `NumericalData()` function. You may feed it an array of values `NumericalData([1,2,3])`, comma-seperated values `NumericalData(1,2,3)`, or a string containing values `NumericalData("1 2 3")`.
+You can create a new data set with the `NumericalData()` function. You may feed it an array of values, comma-seperated values, or a string containing values.
 
 ### Computing Values
 

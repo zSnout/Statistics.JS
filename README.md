@@ -6,7 +6,11 @@ Statistics.JS is a quick, lightweight, and easy-to-use basic statistics library.
 
 There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB), which contains the development version of Statistics.JS. The other is `statistics.min.js` (~7 kB), which contains the production version. We reccomend using the `statistics.min.js` file or using the zSnout hosted version at `https://zsnout.com/libs/statistics.min.js`.
 
-### It can compute:
+### Creating a Data Set
+
+You can create a new data set with the `NumericalData()` function. You may feed it an array of values `NumericalData([1,2,3])`, comma-seperated values `NumericalData(1,2,3)`, or a string containing values `NumericalData("1 2 3")`.
+
+### Computing Values
 
 #### Descriptive Statistics
 
@@ -46,7 +50,7 @@ There are two versions of Statistics.JS. One is the `statistics.js` file (~20 kB
  - Outliers by mean ± 2 × MAD `.madOutliers()` *or* `.outliers("MAD")`
  - Outliers by custom boundaries `.outliers(max,min)` *Numbers will be added as outliers if they are less than `max` or more than `min`.*
 
-### You can also set or add values:
+### Updating a Data Set
 
  - Add an item to the data set `.add(item)`
  - Add several items to the data set `.add(item1,item2...)`

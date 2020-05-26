@@ -48,6 +48,10 @@ Statistics.JS will re-parse each value within the object.
 
 `[5,7,["4in","7in","3.5in"]` --> `5` `7` `4` `7` `3.5`
 
+`{fred: 9,sam: 12,patty: 8}` --> `9` `12` `8`
+
+`{apples: {quantity: 12},pears: {quantity: 5}}` --> `12` `5`
+
 ### Computing Values
 
 #### Descriptive Statistics

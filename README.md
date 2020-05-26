@@ -20,15 +20,15 @@ Statistics.JS will look through the string and attempt to find numbers within th
 
 #### Function
 
-Statistics.JS will evaluate the function and re-parse the value returned.
+Statistics.JS will evaluate the function and re-parse the value returned. **This means that the function may return a string, array, function, or object, and the program will still work.**
 
 #### Array
 
-Statistics.JS will re-parse each value within the array.
+Statistics.JS will re-parse each value within the array. **This means that you may nest arrays (`[2,[2,3]]`) and they will still be interpreted.**
 
 #### Object
 
-Statistics.JS will re-parse each value within the object.
+Statistics.JS will re-parse each value within the object. **This means that you may nest objects (`{tv: {price: 250},imac: {price: 2500}}`) and they will still be interpreted.**
 
 #### Examples
 

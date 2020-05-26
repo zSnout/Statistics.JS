@@ -78,3 +78,4 @@ Statistics.JS will re-parse each value within the object.
  - Add several copies of several items to the data set `.addSeveral(frequency,item1,item2...)`
  - Set the contents of the data set `.data = [item1,item2...]`
  - Clear the data set `.clear()`
+ - Purify the data set (re-parse and clear any non-numerical values) `.purify()`

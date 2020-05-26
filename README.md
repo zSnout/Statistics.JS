@@ -40,6 +40,14 @@ Statistics.JS will re-parse each value within the object.
 
 `"4px, 6px, 78px"` --> `4` `6` `78`
 
+`function() {return 2;}` --> `2`
+
+`function() {return [2,4,"5px"];}` --> `2` `4` `5`
+
+`[3,4,"5pt"]` --> `3` `4` `5`
+
+`[5,7,["4in","7in","3.5in"]` --> `5` `7` `4` `7` `3.5`
+
 ### Computing Values
 
 #### Descriptive Statistics

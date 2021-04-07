@@ -56,3 +56,19 @@ This returns the first quartile of the array. If `median` is true, it will inclu
 ## `.thirdQuartile(median?: Boolean)`
 This returns the third quartile of the array. If `median` is true, it will include the median in the upper half of the array when calculating the quartile.
 `median` defaults to `false`.
+
+## `.first()`
+This returns the first element of the organized array.
+
+## `.last()`
+This returns the last element of the organized array.
+
+## `.interquartileRange()`
+This returns the interquartile range of the array.
+
+## `.summary(median?: Boolean)`
+This returns an array of the five-number summary of the array (min, q1, median, q3, max). See `.firstQuartile()` and `.thirdQuartile()` for information about what `median` does.
+
+## `.mode()`
+This returns an array that contains the values that occur the most in the array.
+The reason it is an array and not just a number is because there can be more than one mode.

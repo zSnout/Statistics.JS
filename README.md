@@ -23,4 +23,14 @@ You have to do this manually with the `.only()` method.
 # Main Differences
 - v1 has many aliases for methods, while v2 has far fewer aliases.
 - v1 adds a new class, while v2 adds onto the Array class.
-- 
+- v1 will only accept numbers and actively filters them, while v2 will accept any values.
+- v1 adds additional methods `.add()`, `.addSeveral()`, `.clear()`, and `.purify()`.
+- v2 adds additional methods `.within()`, `.force()`, `.only()`, and `.on()`.
+- v1 uses `.purify()` to ALTER the original array and remove any non-numbers, while v2 uses `.only()` to RETURN a new array with all numbers in the source array.
+- v1 has special methods for the outlier types "iqr", "stddev", and "mad", while v2 uses an argument passed to it.
+- v1 uses the PROPERTIES `.lower`, `.upper`, `.asc`, `.desc`, and `.data` for the lower and upper halves of the array, the array in forward/backward order, and the elements as an array.
+- v2 uses the METHODS `.lower()`, `.upper()`, and `.organize()` for the lower and upper halves of the array, and the array sorted.
+- v2 accept an argument (median) in several methods to optionally count the median when calculating the lower/upper halves of the array, the quartiles, and the five-number summary.
+
+# What should I use?
+v2. Don't use v1 unless that's what you've been using. v2 is so much better, but I'm keeping v1 here anyway, just in case.

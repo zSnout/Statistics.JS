@@ -28,6 +28,8 @@ When called on non-numbers, it will concatenate the values, or convert them to n
 ## `.product()`
 This returns the product of all the values in the array.
 
+It has an alias: `.prod()`.
+
 ## `.organize()`*
 This returns the array sorted by value. This is not identical to `.sort()`. That sorts as if everything is a string, whereas this uses the numerical value.
 When called on non-numbers, it will sort them using `<` and `>`.
@@ -36,35 +38,55 @@ When called on non-numbers, it will sort them using `<` and `>`.
 This returns an array containing several objects representing the frequency of each element in the array. Each object has a key `item` which specifies the element and a key `count` which specifies now many times it occurred.
 When called on non-numbers, this works in the expected manner.
 
+It has an alias: `.freq()`.
+
 ## `.frequencyOf(item: Any)`*
 This returns the number of times that the element occurs within the array.
 When called on non-numbers, this works in the expected manner.
 
+It has an alias: `.freqOf(item: Any)`.
+
 ## `.frequencyObject()`
 This returns an object with each key being an element within the array, and its value being the number of times is occurred in the array.
+
+It has an alias: `.freqObj()`.
 
 ## `.average()`
 This returns the average of the array.
 
+It has two aliases: `.avg()` and `.mean()`.
+
 ## `.median()`
 This returns the median of the array.
+
+It has two aliases: `.middle()` and `.q2()`.
 
 ## `.firstQuartile(median?: Boolean)`
 This returns the first quartile of the array. If `median` is true, it will include the median in the lower half of the array when calculating the quartile.
 `median` defaults to `false`.
 
+It has an alias: `.q1(median?: Boolean)`.
+
 ## `.thirdQuartile(median?: Boolean)`
 This returns the third quartile of the array. If `median` is true, it will include the median in the upper half of the array when calculating the quartile.
 `median` defaults to `false`.
 
+It has an alias: `.q3(median?: Boolean)`.
+
 ## `.first()`
 This returns the first element of the organized array.
+
+It has an alias: `.q0()`.
 
 ## `.last()`
 This returns the last element of the organized array.
 
+It has an alias: `.q4()`.
+
 ## `.interquartileRange()`
 This returns the interquartile range of the array.
+
+It has an alias: `.iqr()`.
 
 ## `.summary(median?: Boolean)`
 This returns an array of the five-number summary of the array (min, q1, median, q3, max). See `.firstQuartile()` and `.thirdQuartile()` for information about what `median` does.
@@ -75,6 +97,8 @@ The reason it is an array and not just a number is because there can be more tha
 
 ## `.modeFrequency()`
 This returns the number of times that the mode(s) occur as a Number.
+
+It has an alias: `.modeFreq()`.
 
 ## `.lower(median?: Boolean)`
 This returns the lower half of the array. If `median` is `true` and the length is odd, this will include the median in the lower half of the array.
@@ -92,8 +116,12 @@ This returns the variance of the array. If `sample` is `true`, will return the s
 This returns the standard deviation of the array. If `sample` is `true`, will return the sample standard deviation.
 `sample` defaults to `false`.
 
+It has an alias: `.stdDev()`.
+
 ## `.meanAbsoluteDeviation()`
 This returns the mean absolute deviation of the array.
+
+It has an alias: `.mad()`.
 
 ## `.lowerOutliers(max?: String/Number)`
 This returns outliers that are lower than a given point.

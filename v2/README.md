@@ -72,3 +72,57 @@ This returns an array of the five-number summary of the array (min, q1, median, 
 ## `.mode()`
 This returns an array that contains the values that occur the most in the array.
 The reason it is an array and not just a number is because there can be more than one mode.
+
+## `.modeFrequency()`
+This returns the number of times that the mode(s) occur as a Number.
+
+## `.lower(median?: Boolean)`
+This returns the lower half of the array. If `median` is `true` and the length is odd, this will include the median in the lower half of the array.
+`median` defaults to `false`.
+
+## `.upper(median?: Boolean)`
+This returns the upper half of the array. If `median` is `true` and the length is odd, this will include the median in the upper half of the array.
+`median` defaults to `false`.
+
+## `.variance(sample?: Boolean)`
+This returns the variance of the array. If `sample` is `true`, will return the sample variance.
+`sample` defaults to `false`.
+
+## `.standardDeviation(sample?: Boolean)`
+This returns the standard deviation of the array. If `sample` is `true`, will return the sample standard deviation.
+`sample` defaults to `false`.
+
+## `.meanAbsoluteDeviation()`
+This returns the mean absolute deviation of the array.
+
+## `.lowerOutliers(max?: String/Number)`
+This returns outliers that are lower than a given point.
+`max` can be `"iqr"`, `"stddev"`, `"mad"`, or a Number.
+`max` defaults to `"iqr"`.
+
+## `.upperOutliers(min?: String/Number)`
+This returns outliers that are higher than a given point.
+`min` can be `"iqr"`, `"stddev"`, `"mad"`, or a Number.
+`min` defaults to `"iqr"`.
+
+## `.outliers(max?: String/Number, min?: String/Number)`
+This returns outliers of the array that are lower than a given value or higher that another given value.
+`max` and `min` can be `"iqr"`, `"stddev"`, `"mad"`, or a Number.
+`max` defaults to `"iqr"`.
+`min` defaults to `max`.
+
+## `.unique()`
+This returns all unique elements of the array.
+
+## `.flatten()`
+This expands all subarrays of the current array into the main one. Basically calling `.flat(Infinity)`.
+
+## `.within(min?: Number/Null, max?: Number/Null)`
+This returns all numbers in the array that are at least `min` and at most `max`.
+`min` defaults to `-Infinity`.
+`max` defaults to `+Infinity`.
+
+## `.force(min?: Number/Null, max?: Number/Null)`
+This returns the array, but changes every number less that `min` to `min`, and changes every numbers greater than `max` to `max`.
+`min` defaults to `-Infinity`.
+`max` defaults to `+Infinity`.

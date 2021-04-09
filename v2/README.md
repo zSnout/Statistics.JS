@@ -1,5 +1,8 @@
 # StatisticsJS v2
-StatisticsJS v2 is a new library by zSnout which provided functions for simple and complex statistical calculations, as well as a few extra.
+StatisticsJS v2 is a new library by zSnout which provided functions for simple and complex statistical calculations, as well as a few extra methods for non-statistical calculations.
+
+# Installation
+There are two versions of StatisticsJS. One is the index.js file (~6 kB), which contains the development version of StatisticsJS. The other is index.min.js (~4 kB), which contains the production version. We reccomend using the index.min.js file.
 
 # Main Usage
 StatisticsJS v2 adds new methods to existing classes. Most methods are added to the `Array` class, but another is added to all classes. More on that later.
@@ -7,19 +10,24 @@ StatisticsJS v2 adds new methods to existing classes. Most methods are added to 
 It does not automatically filter out non-numbers when calling. You can do that with the `.only()` method, which is talked about later.
 The behavior of these functions when using non-numbers differs, but several will work anyways.
 
-# Methods on the `Array` Object
+# All Methods on the `Array` Object
 Here is a list of all the methods you can call on a member of the `Array` class.
 Note that NONE of these alter the original array, and will instead return a value which you can then use elsewhere.
 Any methods which work predictably when using non-numbers will have an `*` marking that, and an explanation of how they work.
 
-## `.min()`
-This returns the minimum value in the array.
+## Descriptive Statistics
 
-## `.max()`
-This returns the maximum value in the array.
+## `.lower(median?: Boolean)`
+This returns the lower half of the array. If `median` is `true` and the length is odd, this will include the median in the lower half of the array.
+`median` defaults to `false`.
 
-## `.range()`
-This returns the range of the array (maximum - minimum).
+## `.upper(median?: Boolean)`
+This returns the upper half of the array. If `median` is `true` and the length is odd, this will include the median in the upper half of the array.
+`median` defaults to `false`.
+
+## `.organize()`*
+This returns the array sorted by value. This is not identical to `.sort()`. That sorts as if everything is a string, whereas this uses the numerical value.
+When called on non-numbers, it will sort them using `<` and `>`.
 
 ## `.sum()`*
 This returns the sum of all the values in the array.
@@ -30,9 +38,16 @@ This returns the product of all the values in the array.
 
 It has an alias: `.prod()`.
 
-## `.organize()`*
-This returns the array sorted by value. This is not identical to `.sort()`. That sorts as if everything is a string, whereas this uses the numerical value.
-When called on non-numbers, it will sort them using `<` and `>`.
+
+
+## `.min()`
+This returns the minimum value in the array.
+
+## `.max()`
+This returns the maximum value in the array.
+
+## `.range()`
+This returns the range of the array (maximum - minimum).
 
 ## `.frequency()`*
 This returns an array containing several objects representing the frequency of each element in the array. Each object has a key `item` which specifies the element and a key `count` which specifies now many times it occurred.
@@ -99,14 +114,6 @@ The reason it is an array and not just a number is because there can be more tha
 This returns the number of times that the mode(s) occur as a Number.
 
 It has an alias: `.modeFreq()`.
-
-## `.lower(median?: Boolean)`
-This returns the lower half of the array. If `median` is `true` and the length is odd, this will include the median in the lower half of the array.
-`median` defaults to `false`.
-
-## `.upper(median?: Boolean)`
-This returns the upper half of the array. If `median` is `true` and the length is odd, this will include the median in the upper half of the array.
-`median` defaults to `false`.
 
 ## `.variance(sample?: Boolean)`
 This returns the variance of the array. If `sample` is `true`, will return the sample variance.

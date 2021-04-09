@@ -6,45 +6,79 @@ There are two versions of StatisticsJS. One is the index.js file (~6 kB), which 
 
 # Main Usage
 StatisticsJS v2 adds new methods to existing classes. Most methods are added to the `Array` class, but another is added to all classes. More on that later.
-
 It does not automatically filter out non-numbers when calling. You can do that with the `.only()` method, which is talked about later.
+
 The behavior of these functions when using non-numbers differs, but several will work anyways.
 
 # All Methods on the `Array` Object
 Here is a list of all the methods you can call on a member of the `Array` class.
-Note that NONE of these alter the original array, and will instead return a value which you can then use elsewhere.
-Any methods which work predictably when using non-numbers will have an `*` marking that, and an explanation of how they work.
+Note that NONE of these alter the original array, and will instead return a value which you can then use elsewhere
 
 ## Descriptive Statistics
 
-## `.lower(median?: Boolean)`
+### .lower(median?: Boolean)
 This returns the lower half of the array. If `median` is `true` and the length is odd, this will include the median in the lower half of the array.
 `median` defaults to `false`.
 
-## `.upper(median?: Boolean)`
+### .upper(median?: Boolean)
 This returns the upper half of the array. If `median` is `true` and the length is odd, this will include the median in the upper half of the array.
 `median` defaults to `false`.
 
-## `.organize()`*
+### .organize()
 This returns the array sorted by value. This is not identical to `.sort()`. That sorts as if everything is a string, whereas this uses the numerical value.
 When called on non-numbers, it will sort them using `<` and `>`.
 
-## `.sum()`*
+### .sum()
 This returns the sum of all the values in the array.
 When called on non-numbers, it will concatenate the values, or convert them to numbers, in order.
 
-## `.product()`
+### .product()
 This returns the product of all the values in the array.
 
 It has an alias: `.prod()`.
 
+## Measures of Center
 
-
-## `.min()`
+### .min()
 This returns the minimum value in the array.
 
-## `.max()`
+### .max()
 This returns the maximum value in the array.
+
+### .average()
+This returns the average of the array.
+
+It has two aliases: `.avg()` and `.mean()`.
+
+### .median()
+This returns the median of the array.
+
+It has two aliases: `.middle()` and `.q2()`.
+
+### .firstQuartile(median?: Boolean)
+This returns the first quartile of the array. If `median` is true, it will include the median in the lower half of the array when calculating the quartile.
+`median` defaults to `false`.
+
+It has an alias: `.q1()`.
+
+### .thirdQuartile(median?: Boolean)
+This returns the third quartile of the array. If `median` is true, it will include the median in the upper half of the array when calculating the quartile.
+`median` defaults to `false`.
+
+It has an alias: `.q3()`.
+
+### .mode()
+This returns an array that contains the values that occur the most in the array.
+The reason it is an array and not just a number is because there can be more than one mode.
+
+### .modeFrequency()
+This returns the number of times that the mode(s) occur as a Number.
+
+## Measures of Spread
+
+
+
+
 
 ## `.range()`
 This returns the range of the array (maximum - minimum).
@@ -66,28 +100,6 @@ This returns an object with each key being an element within the array, and its 
 
 It has an alias: `.freqObj()`.
 
-## `.average()`
-This returns the average of the array.
-
-It has two aliases: `.avg()` and `.mean()`.
-
-## `.median()`
-This returns the median of the array.
-
-It has two aliases: `.middle()` and `.q2()`.
-
-## `.firstQuartile(median?: Boolean)`
-This returns the first quartile of the array. If `median` is true, it will include the median in the lower half of the array when calculating the quartile.
-`median` defaults to `false`.
-
-It has an alias: `.q1(median?: Boolean)`.
-
-## `.thirdQuartile(median?: Boolean)`
-This returns the third quartile of the array. If `median` is true, it will include the median in the upper half of the array when calculating the quartile.
-`median` defaults to `false`.
-
-It has an alias: `.q3(median?: Boolean)`.
-
 ## `.first()`
 This returns the first element of the organized array.
 
@@ -105,13 +117,6 @@ It has an alias: `.iqr()`.
 
 ## `.summary(median?: Boolean)`
 This returns an array of the five-number summary of the array (min, q1, median, q3, max). See `.firstQuartile()` and `.thirdQuartile()` for information about what `median` does.
-
-## `.mode()`
-This returns an array that contains the values that occur the most in the array.
-The reason it is an array and not just a number is because there can be more than one mode.
-
-## `.modeFrequency()`
-This returns the number of times that the mode(s) occur as a Number.
 
 It has an alias: `.modeFreq()`.
 

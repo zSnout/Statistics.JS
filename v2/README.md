@@ -76,12 +76,30 @@ This returns the number of times that the mode(s) occur as a Number.
 
 ## Measures of Spread
 
+### .standardDeviation(sample?: Boolean)
+This returns the standard deviation of the array. If `sample` is `true`, will return the sample standard deviation.
+`sample` defaults to `false`.
 
+It has an alias: `.stdDev()`.
 
+## .variance(sample?: Boolean)
+This returns the variance of the array. If `sample` is `true`, will return the sample variance.
+`sample` defaults to `false`.
 
+### .interquartileRange()
+This returns the interquartile range of the array.
 
-## `.range()`
+It has an alias: `.iqr()`.
+
+### .meanAbsoluteDeviation()
+This returns the mean absolute deviation of the array.
+
+It has an alias: `.mad()`.
+
+### .range()
 This returns the range of the array (maximum - minimum).
+
+
 
 ## `.frequency()`*
 This returns an array containing several objects representing the frequency of each element in the array. Each object has a key `item` which specifies the element and a key `count` which specifies now many times it occurred.
@@ -110,30 +128,10 @@ This returns the last element of the organized array.
 
 It has an alias: `.q4()`.
 
-## `.interquartileRange()`
-This returns the interquartile range of the array.
-
-It has an alias: `.iqr()`.
-
 ## `.summary(median?: Boolean)`
 This returns an array of the five-number summary of the array (min, q1, median, q3, max). See `.firstQuartile()` and `.thirdQuartile()` for information about what `median` does.
 
 It has an alias: `.modeFreq()`.
-
-## `.variance(sample?: Boolean)`
-This returns the variance of the array. If `sample` is `true`, will return the sample variance.
-`sample` defaults to `false`.
-
-## `.standardDeviation(sample?: Boolean)`
-This returns the standard deviation of the array. If `sample` is `true`, will return the sample standard deviation.
-`sample` defaults to `false`.
-
-It has an alias: `.stdDev()`.
-
-## `.meanAbsoluteDeviation()`
-This returns the mean absolute deviation of the array.
-
-It has an alias: `.mad()`.
 
 ## `.lowerOutliers(max?: String/Number)`
 This returns outliers that are lower than a given point.

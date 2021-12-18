@@ -181,7 +181,7 @@
   proto.force = function(min = -Infinity,max = Infinity) {
     if (typeof min != "number") min = -Infinity;
     if (typeof max != "number") max = Infinity;
-    else return this.on(e => typeof e == "number",e => e < min ? min : e > max ? max : e);
+    return this.on(e => typeof e == "number",e => e < min ? min : e > max ? max : e);
   };
   
   proto.on = function(filter,func) {

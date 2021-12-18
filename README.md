@@ -2,6 +2,10 @@
 StatisticsJS is a JavaScript library that allows you to work with statistics and arrays REALLY easily.
 It currently has two versions, v1 and v2. They are NOT compatiable with each other, and differences between them will be explained below.
 
+# v1 Deprecation
+
+Statistics.JS v1 is deprecated. I wrote it when I was 11 and I want to keep it as a piece of my coding history. Check it out for an example of what NOT to do! #lol
+
 # v1
 StatisticsJS v1 adds a new class, NumericalData. You can call it with or without the `new` keyword.
 
@@ -31,6 +35,3 @@ You have to do this manually with the `.only()` method.
 - v1 uses the PROPERTIES `.lower`, `.upper`, `.asc`, `.desc`, and `.data` for the lower and upper halves of the array, the array in forward/backward order, and the elements as an array.
 - v2 uses the METHODS `.lower()`, `.upper()`, and `.organize()` for the lower and upper halves of the array, and the array sorted.
 - v2 accept an argument (median) in several methods to optionally count the median when calculating the lower/upper halves of the array, the quartiles, and the five-number summary.
-
-# What should I use?
-v2. Don't use v1 unless that's what you've been using. v2 is so much better, but I'm keeping v1 here anyway, just in case.
